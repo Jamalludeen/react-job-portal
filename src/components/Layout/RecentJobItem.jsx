@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./RecentJobItem.module.css";
 import { IconDeviceFloppy } from "@tabler/icons-react";
+import CartContext from "../../store/cart-context";
+import AuthContext from "../../store/auth-context";
 
 const RecentJobItem = (props) => {
-  const jobs = props.jobs;
+  const authCtx = useContext(AuthContext);
+  const cartCtx = useContext(CartContext);
+
+  const saveJobHandler = (job) => {
+    cartCtx.addItem(job);
+  };
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
@@ -27,12 +34,15 @@ const RecentJobItem = (props) => {
               <td>${job.salary}</td>
               <td>
                 <button className={styles.applyButton}>Apply Now</button>
-                <button
-                  style={{ margin: "10px 10px" }}
-                  className={styles.applyButton}
-                >
-                  <IconDeviceFloppy size={15} />
-                </button>
+                {authCtx.isLoggedIn && (
+                  <button
+                    className={styles.applyButton}
+                    style={{ margin: "10px 3px" }}
+                    onClick={() => saveJobHandler(job)}
+                  >
+                    <IconDeviceFloppy size={15} />
+                  </button>
+                )}
               </td>
             </tr>
           ))}

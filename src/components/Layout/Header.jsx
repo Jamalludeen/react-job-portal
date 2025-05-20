@@ -15,9 +15,12 @@ import AuthContext from "../../store/auth-context.jsx";
 import { useNavigate } from "react-router-dom";
 import { IconArchive } from "@tabler/icons-react";
 import Modal from "./Modal.jsx";
+import SavedJobItem from "./SavedJobItem.jsx";
+import CartContext from "../../store/cart-context.jsx";
 
 const Header = () => {
   const authCtx = useContext(AuthContext);
+  const cartCtx = useContext(CartContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -31,12 +34,20 @@ const Header = () => {
   };
 
   const openCart = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeCart = () => {
     setModalIsOpen(false);
   };
 
   return (
     <React.Fragment>
-      {modalIsOpen && <Modal onCloseCart={openCart} />}
+      {modalIsOpen && (
+        <Modal onCloseCart={closeCart}>
+          <SavedJobItem jobs={cartCtx.items} />
+        </Modal>
+      )}
       <Box>
         <header className={classes.header}>
           <Group justify="space-between" h="100%">
@@ -59,7 +70,8 @@ const Header = () => {
               {/* when the user is logged in we show the save icon */}
               {authCtx.isLoggedIn && (
                 <Button onClick={openCart}>
-                  <IconArchive size={24} stroke={1.5} /> <span> 3 </span>
+                  <IconArchive size={24} stroke={1.5} />{" "}
+                  <span> {cartCtx.items.length} </span>
                 </Button>
               )}
 
@@ -93,6 +105,12 @@ const Header = () => {
               onClick={toggleDrawer}
               hiddenFrom="sm"
             />
+            {/* when the user is logged in we show the save icon */}
+            {authCtx.isLoggedIn && (
+              <Button onClick={openCart} hiddenFrom="sm">
+                <IconArchive size={24} /> <span> {cartCtx.items.length} </span>
+              </Button>
+            )}
           </Group>
         </header>
 
@@ -125,12 +143,6 @@ const Header = () => {
             </a>
 
             <Group justify="center" grow pb="xl" px="md">
-              {/* when the user is logged in we show the save icon */}
-              {authCtx.isLoggedIn && (
-                <Button>
-                  <IconArchive size={24} /> <span> 3 </span>
-                </Button>
-              )}
               {authCtx.isLoggedIn && (
                 <Button
                   className="btn btn-outline-primary"

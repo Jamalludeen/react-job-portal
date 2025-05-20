@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Pages/Login.jsx";
 import { AuthContextProvider } from "./store/auth-context.jsx";
 import "@mantine/core/styles.css";
+import CartProvider from "./store/CartProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <MantineProvider defaultColorScheme="dark">
     <AuthContextProvider>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </AuthContextProvider>
   </MantineProvider>
 );

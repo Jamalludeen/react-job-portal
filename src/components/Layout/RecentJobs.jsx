@@ -3,7 +3,7 @@ import RecentJobItem from "./RecentJobItem";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-const DUMMY_RECENT_JOBS = [
+export const DUMMY_RECENT_JOBS = [
   {
     id: 1,
     title: "Web Developer",

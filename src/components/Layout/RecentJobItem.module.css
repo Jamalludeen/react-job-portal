@@ -34,7 +34,3 @@ th {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
-.applyButton:hover {
-  background-color: #2563eb;
-}

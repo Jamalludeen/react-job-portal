@@ -1,3 +1,5 @@
+/* Modal.module.css */
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -6,19 +8,21 @@
   height: 100vh;
   z-index: 20;
   background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px); /* Slight blur effect for depth */
 }
 
 .modal {
   position: fixed;
-  top: 20vh;
+  top: 15vh;
   left: 5%;
   width: 90%;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(145deg, #1f2937, #111827);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+  border: 1px solid #4b5563;
 }
 
 @media (min-width: 768px) {
