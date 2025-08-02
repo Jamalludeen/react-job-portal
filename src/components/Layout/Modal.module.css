@@ -1,0 +1,68 @@
+/* Modal.module.css */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(27, 27, 27, 0.75);
+  backdrop-filter: blur(1.5px); /* Slight blur effect for depth */
+}
+
+.modal {
+  position: fixed;
+  top: 15vh;
+  left: 5%;
+  width: 90%;
+  background: linear-gradient(145deg, #1f2937, #111827);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+  border: 1px solid #4b5563;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 40rem;
+    left: calc(50% - 20rem);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh; /* Control height of modal */
+  overflow: hidden; /* Prevent modal overflow */
+}
+
+.content {
+  overflow-y: auto;
+  flex-grow: 1;
+  margin-bottom: 1rem; /* Space for the fixed button */
+  padding-right: 0.5rem; /* Optional: avoid scrollbar overlapping content */
+}
+
+.actions {
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(145deg, #1f2937, #111827); /* Match modal background */
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-top: 1px solid #374151;
+  z-index: 1;
+}

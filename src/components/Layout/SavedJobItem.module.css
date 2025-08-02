@@ -1,0 +1,63 @@
+/* SavedJobItem.module.css */
+
+.jobList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f2937; /* Dark slate color */
+  color: #e5e7eb; /* Light gray for contrast */
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.jobTitle {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.jobCompany {
+  font-size: 0.875rem; /* 14px */
+  color: #9ca3af; /* Gray */
+  margin-bottom: 4px;
+}
+
+.jobDetails {
+  font-size: 0.75rem; /* 12px */
+  color: #6b7280;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+button:hover {
+  color: #f87171;
+}
+.viewDetailsButton {
+  background-color: #0077ff;
+  color: #ffffff;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.viewDetailsButton:hover {
+  background-color: #005fcc;
+  transform: translateY(-1px);
+}
